@@ -52,7 +52,7 @@ public class SuperheroSightingController {
     
     @GetMapping("/super-powers")
     public String getSuperPowers() {
-        return "NOT IMPLEMENTED: view super powers";
+        return "NOT IMPLEMENTED: View super powers";
     }
     
     @PostMapping("/super-powers")
@@ -77,7 +77,7 @@ public class SuperheroSightingController {
     
     //ADD LOCATION ENPOINTS HERE IF NEEDED
     
-    @GetMapping("/super-sighting")
+    @GetMapping("/super-organizations")
     public String getSuperOrganizations() {
         return "NOT IMPLEMENTED: View super organizations";
     }
