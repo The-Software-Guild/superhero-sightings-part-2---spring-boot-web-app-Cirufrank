@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sighting</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body id="sighting">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+        <a class="navbar-brand" href="">SuperSightings</a>
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item px-2">
+                <a href="../" class="navbar__links">Home</a>
+            </li>
+            <li class="nav-item px-2">
+                <a href="../super-people" class="navbar__links">Who</a>
+            </li>
+            <li class="nav-item px-2">
+                <a href="../super-powers" class="navbar__links">SuperPower</a>
+            </li>
+            <li class="nav-item px-2">
+                <a href="../super-organizations" class="navbar__links">Organization</a>
+            </li>
+            <li class="nav-item px-2">
+                <a href="../locations" class="navbar__links">Locations</a>
+            </li>
+            <li class="nav-item px-2">
+                <a href="../super-sightings" class="navbar__links">Sighting</a>
+            </li>
+            <li class="nav-item px-2">
+                <a href="../gallery" class="navbar__links">Gallery</a>
+            </li>
+        </ul>
+    </nav>
+
+
+
+    <!--- Thu's code --->
+
+
+    <div class="row m-4 border border-dark">
+        <div class="col-3 text-center m-3">
+            <span class="h3">Add Sighting</span>
+        </div>
+        <div class="col-7 text-center m-3">
+            <form action="/super-sightings" method="POST">
+                <div class="form-group row">
+                    <label for="superheroe" class="col-3 col-form-label">
+                        Superhero Name</label>
+                    <div class="col-9">
+                        <select id="superheroe" name="superId"
+                                class="form-control" >
+                            <option th:each="super : ${superheroes}"
+                                    th:value="${super.superId}"
+                                    th:text="${super.superName}">
+
+
+                                Superhero Name</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="location" class="col-3 col-form-label">
+                        Location Name</label>
+                    <div class="col-9">
+                        <select id="location" name="locationId"
+                                class="form-control" >
+                            <option th:each="location : ${locations}"
+                                    th:value="${location.locationId}"
+                                    th:text="${location.locationName}"
+                                    >
+                                Location Name</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+<!--                    <label for = "sightingDate">Date of Sighting</label>-->
+<!--                    <input type="date" id="sightingDate" name="sightingDate">-->
+
+                    <label for="sight_date" class="col-3 col-form-label">Date</label>
+                    <div class="col-9">
+                        <input type="date" id="sight_date" name="sight_date" class="form-control"
+                               >
+                    </div>
+
+                </div>
+                <button type="submit" class="btn btn-primary">Add Sighting</button>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="row m-4 border border-dark">
+        <div class="col text-center m-3">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Sighting ID</th>
+                        <th>Sighting Date</th>
+                        <th>Location</th>
+                        <th>Super</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="sighting : ${sightings}">
+                        <td th:text="${sighting.sightingId}">Sighting ID</td>
+                        <td th:text="${sighting.sightingDate}">Sighting Date</td>
+                        <td th:text="${sighting.sightingLocation.locationName}">Location ID</td>
+                        <td th:text="${sighting.sightingSuper.superName}">Super ID</td>
+
+                        <td><a href="#" th:href="@{super-sightings/editSighting(sightingId=${sighting.sightingId})}">Edit</a></td>
+                        <td><a href="#" th:href="@{super-sightings/deleteSighting(sightingId=${sighting.sightingId})}">Delete</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div> 
+    
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="js/home.js"></script>
+</body>
+
+</html>

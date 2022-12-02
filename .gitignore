@@ -86,6 +86,21 @@ nb-configuration.xml
 resources/*
 
 ##############################
+## NetBeans
+##############################
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+*application.properties*
+resources/*
+.mvn/
+*mvnw*
+
+##############################
 ## Visual Studio Code
 ##############################
 .vscode/
